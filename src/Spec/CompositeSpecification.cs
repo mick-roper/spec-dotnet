@@ -13,12 +13,12 @@ namespace Spec
         /// <summary>
         /// Creates a new instance of the <see cref="CompositeSpecification{TCandidate}"/> class
         /// </summary>
-        /// <param name="leftSpect">The left spec that the composite compares</param>
+        /// <param name="leftSpec">The left spec that the composite compares</param>
         /// <param name="rightSpec">The right spec that the composite compares</param>
-        public CompositeSpecification(Specification<TCandidate> leftSpect, Specification<TCandidate> rightSpec)
+        public CompositeSpecification(Specification<TCandidate> leftSpec, Specification<TCandidate> rightSpec)
         {
-            LeftSpec = leftSpect;
-            RightSpec = rightSpec;
+            LeftSpec = leftSpec ?? throw new ArgumentNullException(nameof(leftSpec));
+            RightSpec = rightSpec ?? throw new ArgumentNullException(nameof(rightSpec));
         }
 
         protected Specification<TCandidate> LeftSpec { get; }
