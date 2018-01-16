@@ -10,5 +10,18 @@ namespace Spec
     /// <typeparam name="TCandidate">The candidate type</typeparam>
     public abstract class CompositeSpecification<TCandidate> : Specification<TCandidate>
     {
+        /// <summary>
+        /// Creates a new instance of the <see cref="CompositeSpecification{TCandidate}"/> class
+        /// </summary>
+        /// <param name="leftSpect">The left spec that the composite compares</param>
+        /// <param name="rightSpec">The right spec that the composite compares</param>
+        public CompositeSpecification(Specification<TCandidate> leftSpect, Specification<TCandidate> rightSpec)
+        {
+            LeftSpec = leftSpect;
+            RightSpec = rightSpec;
+        }
+
+        protected Specification<TCandidate> LeftSpec { get; }
+        protected Specification<TCandidate> RightSpec { get; }
     }
 }
